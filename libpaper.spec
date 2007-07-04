@@ -25,7 +25,7 @@ użytkownika rozmiarze papieru.
 
 %package devel
 Summary:	Header files for libpaper library
-Summary(pl.UTF-8):Pliki nagłówkowe biblioteki libpaper
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libpaper
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -37,7 +37,7 @@ Pliki nagłówkowe biblioteki libpaper.
 
 %package static
 Summary:	Static libpaper library
-Summary(pl.UTF-8):Statyczna biblioteka libpaper
+Summary(pl.UTF-8):	Statyczna biblioteka libpaper
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
