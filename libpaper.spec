@@ -11,6 +11,7 @@ URL:		http://packages.debian.org/unstable/source/libpaper
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
+BuildRequires:	rpmbuild(macros) >= 1.316
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
