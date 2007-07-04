@@ -61,19 +61,28 @@ Statyczna biblioteka libpaper.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/etc/env.d
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+echo 'a4' > $RPM_BUILD_ROOT/etc/papersize
+echo 'a4' > $RPM_BUILD_ROOT/etc/env.d/PAPERSIZE
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
+%env_update
+
 %postun	-p /sbin/ldconfig
+%env_update
 
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog README
+%config(noreplace,missingok) %verify(not md5 mtime size) /etc/env.d/*
+%config(noreplace,missingok) %verify(not md5 mtime size) /etc/papersize
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*.*
