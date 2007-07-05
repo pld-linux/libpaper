@@ -68,7 +68,7 @@ install -d $RPM_BUILD_ROOT/etc/env.d
 	DESTDIR=$RPM_BUILD_ROOT
 
 echo 'a4' > $RPM_BUILD_ROOT/etc/papersize
-echo 'a4' > $RPM_BUILD_ROOT/etc/env.d/PAPERSIZE
+echo '#PAPERSIZE=a4' > $RPM_BUILD_ROOT/etc/env.d/PAPERSIZE
 
 %clean
 rm -rf $RPM_BUILD_ROOT
