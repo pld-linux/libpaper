@@ -12,6 +12,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	rpmbuild(macros) >= 1.316
+Requires(post,postun):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -73,10 +74,12 @@ echo '#PAPERSIZE=a4' > $RPM_BUILD_ROOT/etc/env.d/PAPERSIZE
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
+%post
+/sbin/ldconfig
 %env_update
 
-%postun	-p /sbin/ldconfig
+%postun
+/sbin/ldconfig
 %env_update
 
 %files
@@ -84,17 +87,20 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog README
 %config(noreplace,missingok) %verify(not md5 mtime size) /etc/env.d/*
 %config(noreplace,missingok) %verify(not md5 mtime size) /etc/papersize
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_sbindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
-%{_mandir}/man[1358]/*
+%attr(755,root,root) %{_bindir}/paperconf
+%attr(755,root,root) %{_sbindir}/paperconfig
+%attr(755,root,root) %{_libdir}/libpaper.so.*.*.*
+%{_mandir}/man1/paperconf.1*
+%{_mandir}/man5/papersize.5*
+%{_mandir}/man8/paperconfig.8*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libpaper.so
+%{_libdir}/libpaper.la
 %{_includedir}/paper.h
+%{_mandir}/man3/*.3*
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libpaper.a
