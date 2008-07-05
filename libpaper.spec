@@ -1,12 +1,13 @@
+%define	_nmu	nmu1
 Summary:	Control paper size in applications
 Summary(pl.UTF-8):	Zarządzanie rozmiarem papieru w aplikacjach
 Name:		libpaper
 Version:	1.1.23
-Release:	1
+Release:	0.%{_nmu}.1
 License:	GPL v2+
 Group:		Libraries
-Source0:	http://ftp.debian.org/debian/pool/main/libp/libpaper/%{name}_%{version}.tar.gz
-# Source0-md5:	d357ac5fd7e12b1c81b27f99665e399c
+Source0:	http://ftp.debian.org/debian/pool/main/libp/libpaper/%{name}_%{version}+%{_nmu}.tar.gz
+# Source0-md5:	fb6c57fbad2e691b54210fad43745f4f
 URL:		http://packages.debian.org/unstable/source/libpaper
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -50,7 +51,7 @@ Static libpaper library.
 Statyczna biblioteka libpaper.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}+%{_nmu}
 
 %build
 %{__libtoolize}
@@ -90,6 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/paperconf
 %attr(755,root,root) %{_sbindir}/paperconfig
 %attr(755,root,root) %{_libdir}/libpaper.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libpaper.so.1
 %{_mandir}/man1/paperconf.1*
 %{_mandir}/man5/papersize.5*
 %{_mandir}/man8/paperconfig.8*
