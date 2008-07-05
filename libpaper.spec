@@ -90,6 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/paperconf
 %attr(755,root,root) %{_sbindir}/paperconfig
 %attr(755,root,root) %{_libdir}/libpaper.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libpaper.so.?
 %{_mandir}/man1/paperconf.1*
 %{_mandir}/man5/papersize.5*
 %{_mandir}/man8/paperconfig.8*
