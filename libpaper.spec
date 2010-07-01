@@ -8,7 +8,7 @@ Group:		Libraries
 Source0:	http://ftp.debian.org/debian/pool/main/libp/libpaper/%{name}_%{version}.tar.gz
 # Source0-md5:	5bc87d494ba470aba54f6d2d51471834
 URL:		http://packages.debian.org/unstable/source/libpaper
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	rpmbuild(macros) >= 1.316
@@ -90,17 +90,19 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/paperconf
 %attr(755,root,root) %{_sbindir}/paperconfig
 %attr(755,root,root) %{_libdir}/libpaper.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libpaper.so.?
+%attr(755,root,root) %ghost %{_libdir}/libpaper.so.1
 %{_mandir}/man1/paperconf.1*
 %{_mandir}/man5/papersize.5*
 %{_mandir}/man8/paperconfig.8*
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/libpaper.so
+%attr(755,root,root) %{_libdir}/libpaper.so
 %{_libdir}/libpaper.la
 %{_includedir}/paper.h
-%{_mandir}/man3/*.3*
+%{_mandir}/man3/defaultpaper*.3*
+%{_mandir}/man3/paper*.3*
+%{_mandir}/man3/systempaper*.3*
 
 %files static
 %defattr(644,root,root,755)
