@@ -1,12 +1,12 @@
 Summary:	Control paper size in applications
 Summary(pl.UTF-8):	Zarządzanie rozmiarem papieru w aplikacjach
 Name:		libpaper
-Version:	1.1.28
+Version:	1.1.29
 Release:	1
 License:	GPL v2+
 Group:		Libraries
 Source0:	http://ftp.debian.org/debian/pool/main/libp/libpaper/%{name}_%{version}.tar.gz
-# Source0-md5:	58dcdb3e1074f571b86d0ee937ed0072
+# Source0-md5:	7eeaca882da67489e92a1fa97e266892
 URL:		http://packages.debian.org/unstable/source/libpaper
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
